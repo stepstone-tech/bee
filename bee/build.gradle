@@ -1,5 +1,4 @@
 apply plugin: 'com.android.library'
-apply plugin: 'com.github.dcendents.android-maven'
 apply plugin: 'checkstyle'
 
 check.dependsOn('checkstyle')
@@ -9,12 +8,12 @@ checkstyle {
 }
 
 android {
-  compileSdkVersion 21
-  buildToolsVersion "21.1.2"
+  compileSdkVersion 26
+  buildToolsVersion "26.0.1"
 
   defaultConfig {
-    minSdkVersion 10
-    targetSdkVersion 22
+    minSdkVersion 16
+    targetSdkVersion 26
   }
 
   lintOptions {

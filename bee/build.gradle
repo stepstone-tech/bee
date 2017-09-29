@@ -1,4 +1,5 @@
 apply plugin: 'com.android.library'
+apply plugin: 'com.github.dcendents.android-maven'
 apply plugin: 'checkstyle'
 
 check.dependsOn('checkstyle')
@@ -46,6 +47,29 @@ task javadoc(type: Javadoc) {
 task javadocJar(type: Jar, dependsOn: javadoc) {
   classifier = 'javadoc'
   from javadoc.destinationDir
+}
+
+
+task createPom {
+  apply plugin: 'maven'
+  description "Generates pom.xml"
+  pom {
+    project {
+      groupId 'com.github.orhanobut'
+      artifactId 'bee'
+      version '1.5.1-StepStone'
+      packaging 'aar'
+    }
+  }.withXml {
+    def dependenciesNode = asNode().appendNode('dependencies')
+
+    configurations.compile.allDependencies.each { dependency ->
+      def dependencyNode = dependenciesNode.appendNode('dependency')
+      dependencyNode.appendNode('groupId', dependency.group)
+      dependencyNode.appendNode('artifactId', dependency.name)
+      dependencyNode.appendNode('version', dependency.version)
+    }
+  }.writeTo("$buildDir/pom.xml")
 }
 
 dependencies {

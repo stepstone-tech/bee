@@ -16,7 +16,7 @@
         android:textSize="14sp"
         tools:text="Title"/>
 
-    <Spinner
+    <com.orhanobut.bee.NDSpinner
         android:id="@+id/spinner"
         android:layout_width="0dp"
         android:layout_height="wrap_content"

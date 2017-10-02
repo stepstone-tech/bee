@@ -84,7 +84,7 @@ class SettingsAdapter extends BaseAdapter {
         );
 
         final ReferenceHolder<Boolean> booleanReferenceHolder = new ReferenceHolder<>(Boolean.FALSE);
-        Spinner spinner = view.findViewById(R.id.spinner);
+        NDSpinner spinner = view.findViewById(R.id.spinner);
         spinner.setAdapter(adapter);
         spinner.setSelection(PrefHelper.getInt(context, method.getName()));
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
